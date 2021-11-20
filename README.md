@@ -53,7 +53,7 @@ tar -xzvf latest.tar.gz
 rm latest.tar.gz
 chown -R www-data:www-data wordpress
 ```
-## Create database, database user and grant permissions;
+## Create database, database user and grant permissions
 
 ```
 mysql
@@ -76,10 +76,10 @@ vim sites-available/dms.monster
 
 You could also name the vhost configuration file "wordpress.conf" but "dms.monster" would help with Certbot, as it would discover probably the domain by the name of this file rather than by the folder in /var/www/ folder
 
-## The contents of the vhost conf file (named above)
+## The contents of the vhost conf file
 
 ```
-# vim /etc/nginx/sites-aivailable/wordpress.conf or dms.monster
+# vim /etc/nginx/sites-available/wordpress.conf or dms.monster
 
 
 upstream php-handler {
