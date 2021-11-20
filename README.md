@@ -1,4 +1,4 @@
-# How to install, setup and configure LEMP on VPS
+# How to install, setup and configure LEMP on VPS (Ubuntu 20.04)
 
 This installation will include the following steps
 
