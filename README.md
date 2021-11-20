@@ -45,7 +45,7 @@ mysql_secure_installation
 
 ```
 cd /var/www/
-mkdir dms.moster
+mkdir dms.monster
 cd dms.monster
 wget https://wordpress.org/latest.tar.gz
 ls
