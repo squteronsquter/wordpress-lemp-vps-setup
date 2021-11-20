@@ -72,6 +72,7 @@ cd /etc/nginx
 rm sites-enabled/default
 php --version
 vim sites-available/dms.monster
+
 ```
 
 You could also name the vhost configuration file "wordpress.conf" but "dms.monster" would help with Certbot, as it would discover probably the domain by the name of this file rather than by the folder in /var/www/ folder
@@ -81,25 +82,30 @@ You could also name the vhost configuration file "wordpress.conf" but "dms.monst
 ```
 # vim /etc/nginx/sites-available/wordpress.conf or dms.monster
 
-
 upstream php-handler {
-		server unix:/var/run/php/php7.4-fpm.sock;
+                server unix:/var/run/php/php7.4-fpm.sock;
 }
 server {
-		listen 80 ;
-		server_name dms.monster www.dms.monster;
-		root /var/www/dms.monster/wordpress;
-		index index. php;
-		location / {
-			try_files $uri $uri/ /index .php?$args;
-		}
-		location ~ \. php$ {
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass php-handler;
-		}
+                listen 80;
+                server_name dms.monster www.dms.monster;
+                root /var/www/dms.monster/wordpress;
+                index index.php;
+                location / {
+                        try_files $uri $uri/ /index.php?$args;
+                }
+                location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass php-handler;
+                }
 }
 ```
-* check the Nginx configuration and reload nginx server
+* Enable the new domain
+
+`
+ln -s /etc/nginx/sites-available/dms.monster /etc/nginx/sites-enabled/
+`
+
+* Check the Nginx configuration and reload nginx server
 
 ```
 nginx -t
@@ -118,6 +124,23 @@ certbot --nginx
 certbot renew --dry-run
 
 ```
+
+## Add firewall
+
+UFW is installed on Ubuntu by default
+
+```
+ufw --help
+ufw status
+ufw app list
+ufw allow OpenSSH
+ufw allow 80
+ufw allow 443
+ufw enable
+
+ufw status
+```
+
 ## Check the website and proceed to WordPress Installation:
 
 <https://dms.monster/>
