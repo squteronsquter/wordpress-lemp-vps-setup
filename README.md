@@ -15,5 +15,5 @@ This installation will include the following steps
 
 1. Add domain with the hosting provider (eg. Digital Ocean)
  *	my domain is dms.monster & I just parked it with Digital Ocean in the administration panel
- * see attached image: 
+ * see attached image: https://github.com/squteronsquter/wordpress-lemp-vps-setup/blob/main/images/digitalocean-dms-monster-domain-ns-setup.jpg
 2. Configure NS with the domain registrar
